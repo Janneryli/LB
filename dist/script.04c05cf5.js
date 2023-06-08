@@ -128,9 +128,8 @@ function ShowNotification() {
   toastElement.show();
 }
 var modal = new bootstrap.Modal(document.querySelector('#modaldescription'));
-var modal2 = new bootstrap.Modal(document.querySelector('#modalcreateobj'));
 var modalBody = modal._element.querySelector('.modal-body');
-var descriptions = ['описание колы', 'описание лимон-лайма', 'описание апельсина', 'описание манго-маракуйя', 'описание сибирских трав'];
+var descriptions = ['Это Арахис. У нее все нормально с ногами, просто она очень талантливо может сесть на шпагат. ', 'Это Гусь. Трудно быть таким маленьким и таким круглым, но кто-то же должен это делать. И этот кто-то - Гусь.', 'Это Нон и Аса. Нон случайно нажал кнопку, которая активирует турбо-режим у Асы.Немедленно бегите отсюда', 'Серьезно? Еще одно фото без собаки? Не могу поверить, что вы просто прислали фото дерева...', 'Это Геракл. Он только что передвинул своего ферзя на B5, не оставив вашему королю спасения.'];
 var currentDescriptionIndex = 0;
 function ShowModal(button) {
   currentDescriptionIndex = button.dataset.description;
@@ -145,55 +144,6 @@ function showNextDescription() {
 function showPreviousDescription() {
   currentDescriptionIndex = (currentDescriptionIndex - 1 + descriptions.length) % descriptions.length;
   modalBody.textContent = descriptions[currentDescriptionIndex];
-}
-var currentCard;
-function showNewObjModal(obj) {
-  if (obj.classList.contains("card")) {
-    var title = obj.querySelector("h5").textContent;
-    var content = obj.querySelector("h6").textContent;
-    var titlebox = document.querySelector("#titleInput");
-    titlebox.value = title;
-    var contentbox = document.querySelector("#contentInput");
-    contentbox.value = content;
-  }
-  currentCard = obj;
-  modal2.show();
-}
-function closeNewObjModal() {
-  document.querySelector("#titleInput").value = "";
-  document.querySelector("#contentInput").value = "";
-  modal2.hide();
-}
-function saveNewObjModal() {
-  var cards = document.getElementById("root");
-  var cardscontainer = cards.querySelector(".container");
-  console.log(cardscontainer);
-  var title = $('#titleInput').val();
-  var content = $('#contentInput').val();
-  if (/^\d/.test(title)) {
-    closeNewObjModal();
-  } else {
-    var newcard = document.createElement("div");
-    newcard.classList.add("card");
-    var titleElem = document.createElement("h5");
-    titleElem.textContent = title;
-    var contentElem = document.createElement("h6");
-    contentElem.textContent = content;
-    newcard.setAttribute("onclick", "showNewObjModal(this)");
-    newcard.appendChild(titleElem);
-    newcard.appendChild(contentElem);
-    newcard.setAttribute("id", "card" + cardscontainer.children.length);
-    if (currentCard.classList.contains("card")) {
-      var cardid = currentCard.id;
-      var cur = cardscontainer.querySelector("#" + cardid);
-      cardscontainer.replaceChild(newcard, cur);
-    } else {
-      cardscontainer.appendChild(newcard);
-    }
-    document.querySelector("#titleInput").value = "";
-    document.querySelector("#contentInput").value = "";
-    closeNewObjModal();
-  }
 }
 document.addEventListener('keydown', function (event) {
   if (event.code === 'ArrowRight') {
@@ -231,7 +181,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58498" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51687" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
