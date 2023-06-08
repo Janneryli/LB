@@ -18,5 +18,5 @@
     "handlebars": "^4.7.7",
     "parcel-transformer-hbs": "^1.0.4"
   },
-  "main": "index.js"
+  "main": "index.html"
 }
